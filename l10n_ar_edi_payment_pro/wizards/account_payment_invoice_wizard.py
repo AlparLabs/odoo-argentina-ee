@@ -38,7 +38,7 @@ class AccountPaymentInvoiceWizard(models.TransientModel):
                 period_date = fields.Date.context_today(self)
                 invoice_vals.update(
                     {
-                        "l10n_ar_afip_asoc_period_start": fields.Date().subtract(period_date, months=1),
+                        "l10n_ar_afip_asoc_period_start": fields.Date.subtract(period_date, months=1),
                         "l10n_ar_afip_asoc_period_end": period_date,
                     }
                 )

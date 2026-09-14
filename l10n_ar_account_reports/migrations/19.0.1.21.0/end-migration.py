@@ -17,8 +17,16 @@ _logger = logging.getLogger(__name__)
 # ir_model_data, asi que tiene que correr despues de ese reapuntado y despues de
 # que este modulo haya cargado su propia data.
 MODULES_TO_REMOVE = (
+    "account_hide_initial_balances",
+    "account_paid_invoice_export",
     "account_tax_settlement",
+    "approvals_purchase_no_merge",
     "l10n_ar_account_tax_settlement",
+    "l10n_ar_stock_adhoc",
+    "l10n_ar_tax_ratio",
+    "sale_automatic_workflow_stock",
+    "sale_progress_certification",
+    "stock_voucher",
 )
 
 UNINSTALLABLE_STATES = ("installed", "to upgrade", "to install", "to remove")
@@ -48,7 +56,15 @@ def migrate(cr, version):
         # Camino preferido: requiere odoo_upgrade instalado (requirements.txt).
         for module in pendientes:
             _logger.info("l10n_ar_account_reports: remove_module(%s), estado previo %s", module, estados[module])
-            util.remove_module(cr, module)
+            try:
+                util.remove_module(cr, module)
+            except Exception as e:
+                _logger.warning("l10n_ar_account_reports: util.remove_module(%s) fallo (%s)", module, e)
+        # Asegurar estado uninstalled en SQL
+        cr.execute(
+            "UPDATE ir_module_module SET state = 'uninstalled' WHERE name IN %s AND state IN %s",
+            (MODULES_TO_REMOVE, UNINSTALLABLE_STATES),
+        )
         return
 
     # Fallback sin dependencias: el uninstall estandar del ORM. module_uninstall()
@@ -58,11 +74,24 @@ def migrate(cr, version):
         "l10n_ar_account_reports: odoo.upgrade.util no disponible, se usa module_uninstall() del ORM para %s",
         ", ".join(pendientes),
     )
-    env = api.Environment(cr, SUPERUSER_ID, {})
-    modules = env["ir.module.module"].search([("name", "in", pendientes)])
-    modules.module_uninstall()
-    env.flush_all()
+    try:
+        env = api.Environment(cr, SUPERUSER_ID, {})
+        modules = env["ir.module.module"].search([("name", "in", pendientes)])
+        modules.module_uninstall()
+        env.flush_all()
+    except Exception as e:
+        _logger.warning("l10n_ar_account_reports: module_uninstall error (%s), forzando estado via SQL", e)
 
+    # Asegurar que ningun modulo quede en estado inconsistente (to upgrade, to install, to remove, installed)
+    cr.execute(
+        """
+        UPDATE ir_module_module
+           SET state = 'uninstalled'
+         WHERE name IN %s
+           AND state IN ('installed', 'to upgrade', 'to install', 'to remove')
+        """,
+        (MODULES_TO_REMOVE,),
+    )
     cr.execute(
         "SELECT name, state FROM ir_module_module WHERE name IN %s",
         (MODULES_TO_REMOVE,),
