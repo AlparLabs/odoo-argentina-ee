@@ -17,15 +17,12 @@ _logger = logging.getLogger(__name__)
 # ir_model_data, asi que tiene que correr despues de ese reapuntado y despues de
 # que este modulo haya cargado su propia data.
 MODULES_TO_REMOVE = (
-    "account_hide_initial_balances",
     "account_paid_invoice_export",
     "account_tax_settlement",
-    "approvals_purchase_no_merge",
     "l10n_ar_account_tax_settlement",
     "l10n_ar_stock_adhoc",
     "l10n_ar_tax_ratio",
     "sale_automatic_workflow_stock",
-    "sale_progress_certification",
     "stock_voucher",
 )
 
