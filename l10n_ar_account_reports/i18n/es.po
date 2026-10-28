@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 14:05+0000\n"
+"POT-Creation-Date: 2026-10-26 16:49+0000\n"
 "PO-Revision-Date: 2026-04-20 15:41+0000\n"
 "Last-Translator: julia elizondo <jue@adhoc.inc>\n"
 "Language-Team: Spanish <https://translation.dev-adhoc.com/projects/odoo-"
@@ -668,6 +668,11 @@ msgstr ""
 "vacío."
 
 #. module: l10n_ar_account_reports
+#: model:account.report.line,name:l10n_ar_account_reports.l10n_ar_sire_report_foreign_profits_line
+msgid "Foreign Beneficiaries Profits Withholdings"
+msgstr "Retenciones de ganancias beneficiarios del exterior"
+
+#. module: l10n_ar_account_reports
 #: model:ir.model.fields.selection,name:l10n_ar_account_reports.selection__account_return_type__deadline_periodicity__fortnightly
 #: model:ir.model.fields.selection,name:l10n_ar_account_reports.selection__account_return_type__default_deadline_periodicity__fortnightly
 msgid "Fortnightly"
@@ -1152,9 +1157,9 @@ msgid "SIRCAR (Agente)"
 msgstr ""
 
 #. module: l10n_ar_account_reports
-#: model:account.report,name:l10n_ar_account_reports.l10n_ar_suss_report
-#: model:account.return.type,name:l10n_ar_account_reports.suss_return_type
-msgid "SUSS (Agente)"
+#: model:account.report,name:l10n_ar_account_reports.l10n_ar_sire_report
+#: model:account.return.type,name:l10n_ar_account_reports.sire_return_type
+msgid "SIRE (Agente)"
 msgstr ""
 
 #. module: l10n_ar_account_reports
@@ -1299,8 +1304,8 @@ msgid ""
 "accounts needed for the tax closing entry: %(tax_groups)s"
 msgstr ""
 "A los siguientes grupos de impuestos, utilizados por los impuestos de este "
-"período, les faltan las cuentas necesarias para el asiento de cierre: "
-"%(tax_groups)s"
+"período, les faltan las cuentas necesarias para el asiento de cierre: %"
+"(tax_groups)s"
 
 #. module: l10n_ar_account_reports
 #. odoo-python
@@ -1380,8 +1385,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_ar_account_reports/models/l10n_ar_vat_ret_perc_sufrido.py:0
 msgid ""
-"The regime code must have 3 digits in the configuration of tax "
-"\"%(tax_name)s\""
+"The regime code must have 3 digits in the configuration of tax \"%"
+"(tax_name)s\""
 msgstr ""
 "El código de régimen tiene que tener 3 dígitos en la configuración del "
 "impuesto \"%(tax_name)s\""
@@ -1501,6 +1506,11 @@ msgid "Unrecognized document type"
 msgstr "Tipo de comprobante no reconocido"
 
 #. module: l10n_ar_account_reports
+#: model:account.report.line,name:l10n_ar_account_reports.l10n_ar_sire_report_vat_withholding_line
+msgid "VAT Withholdings"
+msgstr "Retenciones de IVA"
+
+#. module: l10n_ar_account_reports
 #: model:ir.model.fields,field_description:l10n_ar_account_reports.field_inflation_adjustment_index__value
 msgid "Value"
 msgstr ""
@@ -1541,21 +1551,21 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_ar_account_reports/models/caba_report.py:0
 msgid ""
-"You must set the IIBB registration type for contact "
-"\"%(partner_name)s\" (id: %(partner_id)s)"
+"You must set the IIBB registration type for contact \"%(partner_name)s\" "
+"(id: %(partner_id)s)"
 msgstr ""
-"Debe setear el tipo de inscripción de IIBB del contacto "
-"\"%(partner_name)s\" (id: %(partner_id)s)"
+"Debe setear el tipo de inscripción de IIBB del contacto \"%(partner_name)s\" "
+"(id: %(partner_id)s)"
 
 #. module: l10n_ar_account_reports
 #. odoo-python
 #: code:addons/l10n_ar_account_reports/models/santa_fe_report.py:0
 msgid ""
-"You must set the IIBB registration type for partner "
-"\"%(partner_name)s\" (id: %(partner_id)s)"
+"You must set the IIBB registration type for partner \"%(partner_name)s\" "
+"(id: %(partner_id)s)"
 msgstr ""
-"Debe establecer el tipo de inscripción de IIBB del partner "
-"\"%(partner_name)s\" (id: %(partner_id)s)"
+"Debe establecer el tipo de inscripción de IIBB del partner \"%"
+"(partner_name)s\" (id: %(partner_id)s)"
 
 #. module: l10n_ar_account_reports
 #. odoo-python
