@@ -19,7 +19,7 @@
 ##############################################################################
 {
     "name": "Accounting Accountant UX",
-    "version": "19.0.1.17.0",
+    "version": "19.0.1.19.0",
     "category": "Accounting",
     "sequence": 14,
     "summary": "",
@@ -44,6 +44,7 @@
         "wizards/account_reconcile_wizard.xml",
         "wizards/account_tax_settlement_wizard_views.xml",
         "data/account_accountant_data.xml",
+        "data/account_followup_report_data.xml",
         "views/account_journal_dashboard_view.xml",
     ],
     "assets": {
@@ -55,7 +56,6 @@
             "account_accountant_ux/static/src/move_line_list_reconcile_patch.js",
         ],
     },
-    "post_init_hook": "post_init_hook",
     "demo": [],
     "installable": True,
     "auto_install": True,
