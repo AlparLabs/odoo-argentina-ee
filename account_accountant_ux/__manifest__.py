@@ -19,7 +19,7 @@
 ##############################################################################
 {
     "name": "Accounting Accountant UX",
-    "version": "19.0.1.19.0",
+    "version": "19.0.1.24.0",
     "category": "Accounting",
     "sequence": 14,
     "summary": "",
@@ -34,8 +34,8 @@
         "account_followup",
     ],
     "data": [
+        "security/account_accountant_ux_security.xml",
         "security/ir.model.access.csv",
-        "views/res_company_view.xml",
         "views/res_partner_view.xml",
         "views/account_move_line.xml",
         "views/account_report_view.xml",
@@ -45,6 +45,7 @@
         "wizards/account_tax_settlement_wizard_views.xml",
         "data/account_accountant_data.xml",
         "data/account_followup_report_data.xml",
+        "data/account_report_settlement.xml",
         "views/account_journal_dashboard_view.xml",
     ],
     "assets": {
